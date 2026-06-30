@@ -49,10 +49,12 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt.token_blacklist",
     "auth_Mail_and_Cookies",
     "django_rq",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -175,3 +177,16 @@ CACHES = {
 }
 
 RQ_QUEUES = {"default": {"USE_REDIS_CACHE": "default"}}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+]
+
+
+CORS_ALLOW_CREDENTIALS = True
