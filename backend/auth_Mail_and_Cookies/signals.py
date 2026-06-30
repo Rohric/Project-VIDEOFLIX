@@ -17,7 +17,7 @@ def send_activation_email(sender, instance, created, **kwargs):
 
     token = default_token_generator.make_token(instance)
     uidb64 = urlsafe_base64_encode(force_bytes(instance.pk))
-    activation_link = f"{settings.FRONTEND_URL}/activate/{uidb64}/{token}/"
+    activation_link = f"{settings.FRONTEND_URL}/pages/auth/activate.html?uid={uidb64}&token={token}"
 
     subject = "Activate Your Account"
     message = f"""Hello {instance.email},

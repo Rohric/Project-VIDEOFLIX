@@ -57,6 +57,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     email = serializers.CharField()
     password = serializers.CharField(write_only=True)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields.pop(self.username_field, None)
+
     def validate(self, attrs):
         """Check email + password, verify account is active, return tokens."""
         email = attrs.get("email")

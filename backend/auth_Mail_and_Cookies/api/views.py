@@ -174,7 +174,7 @@ class PasswordResetView(APIView):
             token = default_token_generator.make_token(user)
             uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
 
-            reset_link = f"{settings.FRONTEND_URL}/reset/{uidb64}/{token}/"
+            reset_link = f"{settings.FRONTEND_URL}/pages/auth/password_reset_confirm.html?uid={uidb64}&token={token}"
 
             subject = "Reset Your Password"
             message = f"""
